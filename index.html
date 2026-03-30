@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="color-scheme" content="dark light" />
+  <title>Experimental Web Lab</title>
+
+  <!-- Important for GitHub Pages project sites: keep links relative -->
+  <base href="./" />
+
+  <link rel="manifest" href="manifest.webmanifest" />
+  <link rel="stylesheet" href="styles/base.css" />
+  <link rel="stylesheet" href="styles/themes.css" />
+  <link rel="stylesheet" href="styles/components.css" />
+
+  <meta name="description" content="A giant experimental website full of uncommon HTML, Web Components, and modern browser APIs." />
+</head>
+
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+
+  <x-lab-nav></x-lab-nav>
+
+  <main id="main" class="container">
+    <header class="hero">
+      <h1>Experimental Web Lab</h1>
+      <p>
+        A chaotic playground of <strong>uncommon HTML</strong>, <strong>Web Components</strong>,
+        <strong>Popover API</strong>, <strong>CSS Anchor Positioning</strong>, <strong>Canvas</strong>,
+        and progressive enhancement.
+      </p>
+
+      <div class="hero-actions">
+        <button id="openPalette" class="btn">Open Command Palette <kbd>Ctrl</kbd>+<kbd>K</kbd></button>
+
+        <!-- Popover API (progressive enhancement) -->
+        <button class="btn" popovertarget="introPop" popovertargetaction="toggle">
+          Toggle Popover (native if supported)
+        </button>
+        <div id="introPop" class="popover" popover>
+          <h3>Popover API</h3>
+          <p>
+            If your browser supports it, this is rendered in the top layer with light-dismiss.
+            If not, the site falls back to a dialog-based poly-ish behavior.
+          </p>
+          <p class="muted">Try pressing <kbd>Esc</kbd> or clicking outside (in supporting browsers).</p>
+        </div>
+      </div>
+
+      <x-popover-tip for="openPalette" text="Tip: You can type 'theme', 'storage', 'fractal', 'synth'…"></x-popover-tip>
+    </header>
+
+    <section class="grid">
+      <x-demo-card
+        title="Uncommon HTML Elements"
+        href="pages/elements.html"
+        badge="HTML"
+        desc="dialog, details/summary, datalist, output, meter, progress, template, slot, ruby, bdi/bdo, MathML, and more.">
+      </x-demo-card>
+
+      <x-demo-card
+        title="Modern Web APIs"
+        href="pages/apis.html"
+        badge="APIs"
+        desc="Popover API, Clipboard, Storage, service worker, feature detection, and safer fallbacks.">
+      </x-demo-card>
+
+      <x-demo-card
+        title="Fractal Canvas"
+        href="#fractal"
+        badge="Canvas"
+        desc="A custom element that renders animated fractals with controls and reduced-motion respect.">
+      </x-demo-card>
+
+      <x-demo-card
+        title="Synth Pad"
+        href="#synth"
+        badge="Audio"
+        desc="Web Audio oscillator grid + envelope. Starts only after user gesture.">
+      </x-demo-card>
+
+      <x-demo-card
+        title="Signal Graph"
+        href="#graph"
+        badge="Viz"
+        desc="Live waveform plotter with requestAnimationFrame + offscreen optimization."
+      ></x-demo-card>
+
+      <x-demo-card
+        title="Storage Explorer"
+        href="#storage"
+        badge="State"
+        desc="Inspect localStorage/sessionStorage safely; export/import JSON."
+      ></x-demo-card>
+    </section>
+
+    <section id="fractal" class="panel">
+      <h2>Fractal Canvas (Web Component)</h2>
+      <p class="muted">Adjust iterations / palette and toggle animation. Includes reduced-motion support.</p>
+      <x-fractal-canvas></x-fractal-canvas>
+    </section>
+
+    <section id="synth" class="panel">
+      <h2>Synth Pad (Web Audio)</h2>
+      <p class="muted">
+        Click cells to play notes. Audio only starts after a user gesture (browser policy).
+      </p>
+      <x-synth-pad></x-synth-pad>
+    </section>
+
+    <section id="graph" class="panel">
+      <h2>Signal Graph (Canvas)</h2>
+      <p class="muted">A synthetic signal visualizer to stress paint + layout with controlled complexity.</p>
+      <x-signal-graph></x-signal-graph>
+    </section>
+
+    <section id="storage" class="panel">
+      <h2>Storage Explorer</h2>
+      <x-storage-explorer></x-storage-explorer>
+    </section>
+
+    <section class="panel">
+      <h2>Clipboard Lab</h2>
+      <p class="muted">Clipboard access is permission-gated; this component falls back gracefully.</p>
+      <x-clipboard-lab></x-clipboard-lab>
+    </section>
+
+    <footer class="footer">
+      <p>
+        Built for GitHub Pages. Progressive enhancement everywhere.
+        <a href="pages/about.html">About</a>
+      </p>
+    </footer>
+  </main>
+
+  <x-command-palette></x-command-palette>
+
+  <script type="module" src="scripts/app.js"></script>
+</body>
+</html>

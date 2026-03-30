@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  ../
+  <title>APIs — Web Lab</title>
+  styles/base.css
+  styles/themes.css
+  styles/components.css
+</head>
+<body>
+  <x-lab-nav></x-lab-nav>
+
+  <main class="container">
+    <section class="panel">
+      <h1>Modern Web APIs</h1>
+      <p class="muted">
+        This site uses progressive enhancement for Popover API and CSS Anchor Positioning.
+        See MDN’s Popover usage guide and attribute reference for the canonical behavior. [2](https://developer.mozilla.org/en-US/docs/Web/API/Popover_API/Using)[3](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Global_attributes/popover)
+      </p>
+    </section>
+
+    <section class="panel">
+      <h2>Popover API</h2>
+      <p class="muted">Declarative popovers: button + popovertarget + element with popover attribute. [2](https://developer.mozilla.org/en-US/docs/Web/API/Popover_API/Using)[3](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Global_attributes/popover)</p>
+
+      <button class="btn" popovertarget="p1">Toggle popover</button>
+      <div id="p1" class="popover" popover>
+        <strong>Hi!</strong> I’m a popover in the top layer (if supported).
+      </div>
+    </section>
+
+    <section class="panel">
+      <h2>CSS Anchor Positioning (progressive enhancement)</h2>
+      <p class="muted">
+        Anchor positioning tethers one element to another via CSS. MDN explains the module and properties. [4](https://developer.mozilla.org/en-US/docs/Web/CSS/Guides/Anchor_positioning)
+      </p>
+      <p>
+        This repo uses anchor positioning when available; otherwise it falls back to
+        <code>getBoundingClientRect()</code> placement.
+      </p>
+    </section>
+
+    <section class="panel">
+      <h2>PWA</h2>
+      <p class="muted">There’s a manifest + service worker for caching. Try offline after first load.</p>
+      <ul>
+        <li>Service worker: <code>sw.js</code></li>
+        <li>Manifest: <code>manifest.webmanifest</code></li>
+      </ul>
+    </section>
+
+    <section class="panel">
+      <h2>Clipboard</h2>
+      <x-clipboard-lab></x-clipboard-lab>
+    </section>
+  </main>
+
+  <script type="module">
+    import '../elements/x-lab-nav.js';
+    import '../elements/x-clipboard-lab.js';
+  </script>
+</body>
+</html>
